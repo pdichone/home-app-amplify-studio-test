@@ -1,1 +1,3 @@
 # home-app-amplify-studio-test
+
+## Testing amplify studio from the beginning...
