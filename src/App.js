@@ -47,9 +47,9 @@ function App() {
     TextField29766924: {
       placeholder: imageUrl,
     },
-    // Button31772688: {
-    //   src: updateHome == null ? {} : "hello",
-    // },
+    Button31772688: {
+      src: updateHome == null ? {} : "hello",
+    },
   };
   return (
     <div className='App'>
