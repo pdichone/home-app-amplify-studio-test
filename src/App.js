@@ -82,6 +82,9 @@ function App() {
               overrides: {
                 Button31592722: {
                   onClick: () => {
+                    if (showForm === false) {
+                      setShowForm(true);
+                    }
                     setUpdateHome(item);
                     setAddress(item.address);
                     setPrice(item.price);
