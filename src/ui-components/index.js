@@ -31,6 +31,7 @@ export { default as SocialPost } from "./SocialPost";
 export { default as NewHomes } from "./NewHomes";
 export { default as MyIcon } from "./MyIcon";
 export { default as ReviewCard } from "./ReviewCard";
+export { default as NavBarr } from "./NavBarr";
 export { default as AddHome } from "./AddHome";
 export { default as SideBar } from "./SideBar";
 export { default as FeaturesText2x2 } from "./FeaturesText2x2";

@@ -1,12 +1,10 @@
 import "./App.css";
 import { Hub } from "aws-amplify";
-import { Button, Modal } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import {
   NewHomes,
-  UpdateHome,
   DeleteHome,
-  NavBar,
+  NavBarr,
   AddHome,
   AddHomeButton,
 } from "./ui-components";
@@ -15,6 +13,9 @@ function App() {
   const [updateHome, setUpdateHome] = useState();
   const [showDeleteHome, setShowDeleteHome] = useState();
   const [showForm, setShowForm] = useState(false);
+  const [address, setAddress] = useState("");
+  const [price, setPrice] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     Hub.listen("ui", ({ payload }) => {
@@ -23,13 +24,6 @@ function App() {
       }
     });
   }, [setShowDeleteHome]);
-  const [address, setAddress] = useState("");
-  const [price, setPrice] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-
-  //this always conflicts with the generated Update functionality
-  //Hence setting placeholder to the values
-  //If setting fields value, it breaks - no way to edit the field :()
 
   const addHomeOverrides = {
     Button: {
@@ -37,9 +31,12 @@ function App() {
         //set forShow to true or false
         setShowForm(!showForm);
       },
-      children: showForm ? "Hide Button" : "Add Home",
+      children: showForm ? "Hide Form" : "Add Home",
     },
   };
+  //this always conflicts with the generated Update functionality
+  //Hence setting placeholder to the values
+  //If setting fields value, it breaks - no way to edit the field :()
   const populateFormOverride = {
     TextField29766922: {
       placeholder: address,
@@ -50,18 +47,19 @@ function App() {
     TextField29766924: {
       placeholder: imageUrl,
     },
-    Button31772688: {
-      src: updateHome == null ? {} : "hello",
-    },
+    // Button31772688: {
+    //   src: updateHome == null ? {} : "hello",
+    // },
   };
   return (
     <div className='App'>
-      <NavBar width={"100vw"} />
+      <NavBarr width={"100vw"} />
       <header className='App-header'>
         <AddHomeButton
           overrides={addHomeOverrides}
           style={{ textAlign: "left", margin: "1rem" }}
         />
+
         {showForm && (
           <AddHome
             home={updateHome}
@@ -70,7 +68,6 @@ function App() {
             style={{ textAlign: "left", margin: "1rem" }}
           />
         )}
-
         <div>
           {showDeleteHome && (
             <div className='modal'>
